@@ -1,0 +1,43 @@
+.plant-container {
+  height: 300px;
+  background-color: #171a24;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+}
+
+.plant-greenhouse {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 22px;
+  flex-direction: column;
+}
+
+.use-greenhouse-span {
+  color: #fff;
+  font-weight: bold;
+  align-self: center;
+}
+
+.greenhouse-probability {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.remove {
+  position: absolute;
+  font-size: 12px;
+  color: red;
+  font-weight: bold;
+  width: 20px;
+  text-align: center;
+  padding: 2px;
+  cursor: pointer;
+  border: 1px solid red;
+  right: 0;
+  top: 0;
+}
