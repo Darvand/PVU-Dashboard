@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/PVU-Dashboard/static/css/main.8ef89ef7.chunk.css",
+    "main.js": "/PVU-Dashboard/static/js/main.add97ef0.chunk.js",
+    "main.js.map": "/PVU-Dashboard/static/js/main.add97ef0.chunk.js.map",
+    "runtime-main.js": "/PVU-Dashboard/static/js/runtime-main.096f2ab4.js",
+    "runtime-main.js.map": "/PVU-Dashboard/static/js/runtime-main.096f2ab4.js.map",
+    "static/js/2.c04e55ac.chunk.js": "/PVU-Dashboard/static/js/2.c04e55ac.chunk.js",
+    "static/js/2.c04e55ac.chunk.js.map": "/PVU-Dashboard/static/js/2.c04e55ac.chunk.js.map",
+    "static/js/3.97e22ddf.chunk.js": "/PVU-Dashboard/static/js/3.97e22ddf.chunk.js",
+    "static/js/3.97e22ddf.chunk.js.map": "/PVU-Dashboard/static/js/3.97e22ddf.chunk.js.map",
+    "index.html": "/PVU-Dashboard/index.html",
+    "static/css/main.8ef89ef7.chunk.css.map": "/PVU-Dashboard/static/css/main.8ef89ef7.chunk.css.map",
+    "static/js/2.c04e55ac.chunk.js.LICENSE.txt": "/PVU-Dashboard/static/js/2.c04e55ac.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.096f2ab4.js",
+    "static/js/2.c04e55ac.chunk.js",
+    "static/css/main.8ef89ef7.chunk.css",
+    "static/js/main.add97ef0.chunk.js"
+  ]
+}
