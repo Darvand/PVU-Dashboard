@@ -1,5 +1,4 @@
 .plant-container {
-  height: 300px;
   background-color: #171a24;
   width: 300px;
   display: flex;
@@ -14,6 +13,7 @@
   justify-content: space-around;
   font-size: 22px;
   flex-direction: column;
+  padding: 10px 0;
 }
 
 .use-greenhouse-span {

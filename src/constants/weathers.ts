@@ -283,6 +283,17 @@ const probabilityEventByElement: Record<Events, Record<Elements, number>> = {
     Water: 0,
     Wind: 0,
   },
+  None: {
+    Dark: 0,
+    Electro: 0,
+    Fire: 0,
+    Ice: 0,
+    Light: 0,
+    Parasite: 0,
+    Metal: 0,
+    Water: 0,
+    Wind: 0,
+  },
 };
 
 const winterEventProbabilityByElement: Record<
@@ -299,6 +310,7 @@ const winterEventProbabilityByElement: Record<
   "Solar Maxima": probabilityEventByElement["Solar Maxima"],
   "Magnetic Reconnection": probabilityEventByElement["Magnetic Reconnection"],
   Windy: probabilityEventByElement.Windy,
+  None: probabilityEventByElement.None,
 };
 
 const springEventProbabilityByElement: Record<
@@ -316,6 +328,7 @@ const springEventProbabilityByElement: Record<
   "Locusts Swarm": probabilityEventByElement["Locusts Swarm"],
   "Rats Swarm": probabilityEventByElement["Rats Swarm"],
   Malaria: probabilityEventByElement.Malaria,
+  None: probabilityEventByElement.None,
 };
 
 const summerEventProbabilityByElement: Record<
@@ -339,6 +352,7 @@ const summerEventProbabilityByElement: Record<
   "Solar Flares": probabilityEventByElement["Solar Flares"],
   "Solar Maxima": probabilityEventByElement["Solar Maxima"],
   "Proton Storm": probabilityEventByElement["Proton Storm"],
+  None: probabilityEventByElement.None,
 };
 
 const autumnEventProbabilityByElement: Record<
@@ -362,6 +376,7 @@ const autumnEventProbabilityByElement: Record<
   "Locusts Swarm": probabilityEventByElement["Locusts Swarm"],
   "Rats Swarm": probabilityEventByElement["Rats Swarm"],
   Malaria: probabilityEventByElement.Malaria,
+  None: probabilityEventByElement.None,
 };
 
 export const probabilityWeatherEventByElement = {

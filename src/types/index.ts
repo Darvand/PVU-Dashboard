@@ -47,7 +47,8 @@ export type WinterEvents =
   | "Coronal Mass Ejection"
   | "Solar Flares"
   | "Solar Maxima"
-  | "Magnetic Reconnection";
+  | "Magnetic Reconnection"
+  | "None";
 
 export type SpringEvents =
   | "Hurricanes"
@@ -60,7 +61,8 @@ export type SpringEvents =
   | "Iron Rain"
   | "Locusts Swarm"
   | "Rats Swarm"
-  | "Malaria";
+  | "Malaria"
+  | "None";
 
 export type SummerEvents =
   | "Heat Wave"
@@ -79,7 +81,8 @@ export type SummerEvents =
   | "Coronal Mass Ejection"
   | "Solar Flares"
   | "Solar Maxima"
-  | "Proton Storm";
+  | "Proton Storm"
+  | "None";
 
 export type AutumnEvents =
   | "Hurricanes"
@@ -98,6 +101,9 @@ export type AutumnEvents =
   | "Moonlight"
   | "Locusts Swarm"
   | "Rats Swarm"
-  | "Malaria";
+  | "Malaria"
+  | "None";
 
 export type Events = WinterEvents | SpringEvents | SummerEvents | AutumnEvents;
+
+export type IconsType = Weather;

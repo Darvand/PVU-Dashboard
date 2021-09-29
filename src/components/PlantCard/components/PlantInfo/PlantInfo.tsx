@@ -18,7 +18,7 @@ interface PlantInfoProps {
 const PlantInfo = ({ plant }: PlantInfoProps): ReactElement => {
   return (
     <div className="plant-info">
-      <PlantImage id={plant.id} rarity={plant.rarity} />
+      <PlantImage id={plant.id} rarity={plant.rarity} type={plant.type} />
       <div className="stats-container">
         <PlantInfoRow field="Tipo">
           <div className="type-label">
@@ -35,9 +35,16 @@ const PlantInfo = ({ plant }: PlantInfoProps): ReactElement => {
             </p>
           </div>
         </PlantInfoRow>
-        <PlantInfoRow field="Produccion">
+        <PlantInfoRow field="Calidad">
           <div className="type-label">
             <p className="text">{SPANISH_QUALITY[plant.production.quality]}</p>
+          </div>
+        </PlantInfoRow>
+        <PlantInfoRow field="LE/Hora">
+          <div className="type-label">
+            <p className="text">
+              {(plant.production.le / plant.production.hours).toFixed(2)}
+            </p>
           </div>
         </PlantInfoRow>
         <div className="stats-row" style={{ alignSelf: "center" }}>

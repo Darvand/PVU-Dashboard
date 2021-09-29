@@ -1,4 +1,4 @@
-import { Elements } from "../types";
+import { Elements, IconsType } from "../types";
 
 export const ELEMENT_ICONS: Record<Elements, string> = {
   Metal: "https://cdn.discordapp.com/emojis/869490822897348679.png",
@@ -11,3 +11,16 @@ export const ELEMENT_ICONS: Record<Elements, string> = {
   Water: "https://cdn.discordapp.com/emojis/869490823245479956.png?v=1",
   Wind: "https://cdn.discordapp.com/emojis/869490884771729468.png?v=1",
 };
+
+export const Icon: Record<IconsType, string> = {
+  Winter:
+    "https://media.discordapp.net/attachments/863091732785528842/868747314708230164/Winter_snow.png",
+  Autumn:
+    "https://media.discordapp.net/attachments/863091732785528842/868747314708230164/Winter_snow.png",
+  Springer:
+    "https://media.discordapp.net/attachments/863091732785528842/868747314708230164/Winter_snow.png",
+  Summer:
+    "https://media.discordapp.net/attachments/863091732785528842/868747314708230164/Winter_snow.png",
+};
+
+// export const Greenhouse = 'https://marketplace.plantvsundead.com/_nuxt/img/greenhouse@3x.5eab364.png';

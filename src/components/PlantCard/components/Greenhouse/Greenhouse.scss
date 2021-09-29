@@ -1,0 +1,12 @@
+.greenhouse-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.event-probability-container {
+  overflow: auto;
+  height: 300px;
+}
