@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/PVU-Dashboard/static/css/main.cfaca68d.chunk.css",
-    "main.js": "/PVU-Dashboard/static/js/main.47e8c11f.chunk.js",
-    "main.js.map": "/PVU-Dashboard/static/js/main.47e8c11f.chunk.js.map",
+    "main.js": "/PVU-Dashboard/static/js/main.43fd259f.chunk.js",
+    "main.js.map": "/PVU-Dashboard/static/js/main.43fd259f.chunk.js.map",
     "runtime-main.js": "/PVU-Dashboard/static/js/runtime-main.74509bb3.js",
     "runtime-main.js.map": "/PVU-Dashboard/static/js/runtime-main.74509bb3.js.map",
     "static/js/2.02cc00ba.chunk.js": "/PVU-Dashboard/static/js/2.02cc00ba.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.74509bb3.js",
     "static/js/2.02cc00ba.chunk.js",
     "static/css/main.cfaca68d.chunk.css",
-    "static/js/main.47e8c11f.chunk.js"
+    "static/js/main.43fd259f.chunk.js"
   ]
 }
