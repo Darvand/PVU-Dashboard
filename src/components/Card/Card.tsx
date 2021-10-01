@@ -4,6 +4,8 @@ import { FarmResponse } from "../../types/farm";
 import { CardIcon } from "./components/CardIcon";
 import { CardInfo } from "./components/CardInfo";
 
+import { DateTime, Interval } from "luxon";
+
 interface CardProps {
   plantData: FarmResponse["data"][0];
 }
@@ -33,15 +35,32 @@ const calculateLeMonthly = (plant: CardProps["plantData"]["plant"]) => {
   return totalLeMonthly;
 };
 
+const harvestColor = (harvestTime: DateTime) => {
+  const now = DateTime.now();
+  const isPassedHaverstTime = harvestTime > now;
+  const differenceInHours = isPassedHaverstTime
+    ? Interval.fromDateTimes(now, harvestTime).length("hours")
+    : 0;
+  if (differenceInHours > 24) return "bg-gray-700";
+  if (harvestTime.day !== now.day) return "bg-gray-700";
+  return differenceInHours > 0 ? "bg-green-900" : "bg-green-600";
+};
+
 const Card = ({ plantData }: CardProps) => {
-  console.log(plantData);
   const { state } = useContext(AppContext);
   const { hours, le } = plantData.plant.production;
   const leMonthly = calculateLeMonthly(plantData.plant);
   const pvuMonthly = (leMonthly / 500) * 0.95;
+  const harvestTime = DateTime.fromMillis(plantData.harvestTime);
+  const harvestTimeFormatted = harvestTime.toLocaleString(
+    DateTime.DATETIME_MED
+  );
+  const bgColor = harvestColor(harvestTime);
   return (
     <div className="bg-gray-800 w-80 rounded-xl" style={{ height: "400px" }}>
-      <div className="font-sans text-gray-50 h-1/3 flex justify-around items-center rounded-t-xl rounded-tl-xl p-3 bg-gray-700">
+      <div
+        className={`font-sans text-gray-50 h-1/3 flex justify-around items-center rounded-t-xl rounded-tl-xl p-3 ${bgColor}`}
+      >
         <div className="grid-cols-2 grid-rows-2 grid gap-2">
           <CardIcon active={plantData.needWater} icon="Water" />
           <CardIcon active={plantData.hasCrow} icon="Crow" />
@@ -65,7 +84,7 @@ const Card = ({ plantData }: CardProps) => {
       <div className="grid grid-cols-2 h-2/3 rounded-b-xl rounded-bl-xl p-3 items-center">
         <CardInfo
           title="Cosechable el"
-          value="Oct 1, 2021, 7:44 AM"
+          value={harvestTimeFormatted}
           colSpan={2}
         />
         <CardInfo

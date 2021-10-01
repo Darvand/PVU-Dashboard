@@ -1,9 +1,8 @@
 import React, { ReactElement } from "react";
-import "./Header.scss";
 
 export default function Header(): ReactElement {
   return (
-    <div className="header-container">
+    <div className="bg-gray-900 fixed h-14 w-full flex justify-center items-center top-0 z-20">
       <img
         src="https://marketplace.plantvsundead.com/_nuxt/img/logo.487528b.svg"
         alt="PVU Logo"
