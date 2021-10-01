@@ -1,5 +1,6 @@
 import React from "react";
 import { TabProps } from "../Tab/Tab";
+import { GrFormAdd } from "react-icons/gr";
 import "./TabButtons.scss";
 
 interface Props {
@@ -17,10 +18,12 @@ const TabButtons = ({ data, changeTab, activeTab }: Props) => {
           onClick={() => changeTab(id)}
           key={id}
         >
-          {/* <img src={icon} alt="Icon Tab" className="tab-icon" /> */}
           <p className="tab-icon">{icon}</p>
         </button>
       ))}
+      {/* <button>
+        <GrFormAdd />
+      </button> */}
     </div>
   );
 };

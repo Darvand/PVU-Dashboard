@@ -31,10 +31,7 @@ const mainReducer = ({ PVU }: State, action: ProductActions) => ({
   PVU: pvuReducer(PVU, action),
 });
 
-const requestOptions = {
-  method: "GET",
-  uri: "http://localhost:3001/pvu/price",
-};
+const backendURL = process.env.BACKEND_URL || "https://ngd-api.herokuapp.com";
 
 const AppProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(mainReducer, initialState);
@@ -43,11 +40,10 @@ const AppProvider: FC = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get<{ price: number }>("http://localhost:3001/pvu/price")
+      .get<{ price: number }>(`${backendURL}/pvu/price`)
       .then((response) => {
         setLoading(false);
         setPvuInfo({ price: response.data.price });
-        console.log("price", response.data.price);
       })
       .catch((error) => {
         console.log("error", error.message);

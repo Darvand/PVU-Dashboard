@@ -1,4 +1,5 @@
 import React, { ReactChild, useContext, useEffect, useState } from "react";
+import Button from "../../components/Button/Button";
 import PlantInfoRow from "../../components/PlantCard/components/PlantInfoRow/PlantInfoRow";
 import { Tab } from "../../components/PlantCard/components/Tab/Tab";
 import Tabs from "../../components/PlantCard/components/Tabs/Tabs";
@@ -67,7 +68,7 @@ const Farm = (props: Props) => {
   const [farmName, setFarmName] = useState("");
   const { farm, error, loading } = useFarmAPI(farms);
 
-  const addPlant = () => {
+  const addFarm = () => {
     setShowModal(false);
     if (!token && !farmName) return;
     if (farms.some((storedFarm) => storedFarm.token === token)) return;
@@ -88,10 +89,9 @@ const Farm = (props: Props) => {
       setFarm(farm);
     }
   }, [farm]);
-  if (farmData.length === 0) return <div></div>;
   return (
     <div>
-      <button onClick={() => setShowModal(true)}>Agregar farm</button>
+      <Button onClick={() => setShowModal(true)} label="Agregar farm" />
       <Modal show={showModal}>
         <div className="add-plant-modal">
           <p className="text">Ingresa el token</p>
@@ -110,77 +110,88 @@ const Farm = (props: Props) => {
             value={farmName}
             onChange={(e) => setFarmName(e.target.value)}
           />
-          <button className="modal-button" onClick={() => addPlant()}>
+          <button className="modal-button" onClick={() => addFarm()}>
             Agregar
           </button>
         </div>
       </Modal>
-      <Tabs topTabs>
-        {farmData.map((tabFarm, index) => (
-          <Tab data={{ label: tabFarm.name, id: index }} key={index}>
-            <div className="farm-container">
-              {!loading &&
-                tabFarm.data.map((plantData, index) => {
-                  const { hours, le } = plantData.plant.production;
-                  const leMonthly = calculateLeMonthly(plantData.plant);
-                  const pvuMonthly = (leMonthly / 500) * 0.95;
-                  return (
-                    <div className="plant-card-container" key={index}>
-                      <div className="flex align-center">
-                        <img
-                          src={plantData.plant.icon}
-                          alt="Plant Icon"
-                          className="plant-card-image"
-                        />
-                      </div>
-                      <div className="flex-column plant-info-container wf">
-                        <PlantIconRow
-                          needWater={plantData.needWater}
-                          hasCrow={plantData.hasCrow}
-                          hasSeed={plantData.hasSeed}
-                        />
-                        <PlantInfoRow field="Cosechable el">
-                          <PlantInfoRowValue value={plantData.harvestTime} />
-                        </PlantInfoRow>
-                        <PlantInfoRow field="Tiempo detenido">
-                          <PlantInfoRowValue
-                            value={calculateTimeStoped(plantData.timeStoped)}
-                          />
-                        </PlantInfoRow>
-                        <PlantInfoRow field="Produccion">
-                          <PlantInfoRowValue value={`${le}LE/${hours}Horas`} />
-                        </PlantInfoRow>
-                        <PlantInfoRow field="Relacion">
-                          <PlantInfoRowValue
-                            value={`${(le / hours).toFixed(2)}LE/Hora`}
-                          />
-                        </PlantInfoRow>
-                        <PlantInfoRow field="LE Mensual">
-                          <PlantInfoRowValue value={leMonthly.toFixed(2)} />
-                        </PlantInfoRow>
-                        <PlantInfoRow field="PVUs">
-                          <PlantInfoRowValue
-                            value={`${pvuMonthly.toFixed(2)} PVU`}
-                          />
-                        </PlantInfoRow>
-                        <PlantInfoRow field="Ganancia">
-                          <PlantInfoRowValue
-                            value={`${(pvuMonthly * state.PVU.price).toFixed(
-                              2
-                            )} USD`}
-                          />
-                        </PlantInfoRow>
-                      </div>
-                    </div>
-                  );
-                })}
-              <button onClick={() => removeFarm(tabFarm.name)}>
-                Remover Farm
-              </button>
-            </div>
-          </Tab>
-        ))}
-      </Tabs>
+      {farmData.length > 0 && (
+        <Tabs topTabs>
+          {farmData.map((tabFarm, index) => (
+            <Tab data={{ label: tabFarm.name, id: index }} key={index}>
+              <div className="flex-column align-center">
+                <div className="farm-container">
+                  {!loading &&
+                    tabFarm.data.map((plantData, index) => {
+                      const { hours, le } = plantData.plant.production;
+                      const leMonthly = calculateLeMonthly(plantData.plant);
+                      const pvuMonthly = (leMonthly / 500) * 0.95;
+                      return (
+                        <div className="plant-card-container" key={index}>
+                          <div className="flex align-center">
+                            <img
+                              src={plantData.plant.icon}
+                              alt="Plant Icon"
+                              className="plant-card-image"
+                            />
+                          </div>
+                          <div className="flex-column plant-info-container wf">
+                            <PlantIconRow
+                              needWater={plantData.needWater}
+                              hasCrow={plantData.hasCrow}
+                              hasSeed={plantData.hasSeed}
+                            />
+                            <PlantInfoRow field="Cosechable el">
+                              <PlantInfoRowValue
+                                value={plantData.harvestTime}
+                              />
+                            </PlantInfoRow>
+                            <PlantInfoRow field="Tiempo detenido">
+                              <PlantInfoRowValue
+                                value={calculateTimeStoped(
+                                  plantData.timeStoped
+                                )}
+                              />
+                            </PlantInfoRow>
+                            <PlantInfoRow field="Produccion">
+                              <PlantInfoRowValue
+                                value={`${le}LE/${hours}Horas`}
+                              />
+                            </PlantInfoRow>
+                            <PlantInfoRow field="Relacion">
+                              <PlantInfoRowValue
+                                value={`${(le / hours).toFixed(2)}LE/Hora`}
+                              />
+                            </PlantInfoRow>
+                            <PlantInfoRow field="LE Mensual">
+                              <PlantInfoRowValue value={leMonthly.toFixed(2)} />
+                            </PlantInfoRow>
+                            <PlantInfoRow field="PVU Mensual">
+                              <PlantInfoRowValue
+                                value={`${pvuMonthly.toFixed(2)} PVU`}
+                              />
+                            </PlantInfoRow>
+                            <PlantInfoRow field="Ganancia Mensual">
+                              <PlantInfoRowValue
+                                value={`${(
+                                  pvuMonthly * state.PVU.price
+                                ).toFixed(2)} USD`}
+                              />
+                            </PlantInfoRow>
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
+                <Button
+                  onClick={() => removeFarm(tabFarm.name)}
+                  label="Remover Farm"
+                />
+              </div>
+            </Tab>
+          ))}
+        </Tabs>
+      )}
     </div>
   );
 };

@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FarmResponse, FarmStored } from "../types/farm";
 
+const backendURL = process.env.BACKEND_URL || "https://ngd-api.herokuapp.com";
+
 export const useFarmAPI = (farms: FarmStored[]) => {
   const [farm, setFarm] = useState<FarmResponse[]>([]);
   const [error, setError] = useState();
@@ -10,7 +12,7 @@ export const useFarmAPI = (farms: FarmStored[]) => {
   useEffect(() => {
     const fetchFarm = () => {
       axios
-        .post<FarmResponse[]>("http://localhost:3001/pvu/farm", {
+        .post<FarmResponse[]>(`${backendURL}/pvu/farm`, {
           farmData: farms,
         })
         .then((response) => setFarm(response.data))
