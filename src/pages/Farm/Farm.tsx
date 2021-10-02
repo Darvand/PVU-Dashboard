@@ -39,8 +39,8 @@ const Modal = ({ show, children, closeModal }: ModalProps) => {
 };
 
 const Farm = (props: Props) => {
-  const [farmData, setFarm] = useState<FarmResponse[]>([]);
-  const [showModal, setShowModal] = useState(true);
+  const [farmData, setFarmData] = useState<FarmResponse[]>([]);
+  const [showModal, setShowModal] = useState(false);
   const [farms, setFarms] = useLocalStorage<FarmStored[]>("farms", []);
   const [token, setToken] = useState("");
   const [farmName, setFarmName] = useState("");
@@ -61,11 +61,9 @@ const Farm = (props: Props) => {
     );
     setFarms(newFarms);
   };
-
   useEffect(() => {
-    console.log(farm);
     if (farm !== null) {
-      setFarm(farm);
+      setFarmData(farm);
     }
   }, [farm]);
   return (
@@ -74,7 +72,7 @@ const Farm = (props: Props) => {
         <div className="w-full p-8 flex flex-col items-center justify-center gap-5">
           <div className="flex flex-col justify-center items-center">
             <input
-              className="text-sm p-2 text-gray-50 rounded-md"
+              className="text-sm p-2 text-gray-700 rounded-md"
               type="text"
               placeholder="Ejemplo: eyJhbGciOiJI..."
               value={token}
@@ -84,7 +82,7 @@ const Farm = (props: Props) => {
           </div>
           <div className="flex flex-col justify-center items-center">
             <input
-              className="text-sm p-2 text-gray-50 rounded-md"
+              className="text-sm p-2 text-gray-700 rounded-md"
               type="text"
               placeholder="Ejemplo: Mi farm"
               value={farmName}
@@ -95,12 +93,12 @@ const Farm = (props: Props) => {
           <Button onClick={() => addFarm()} label="Agregar" />
         </div>
       </Modal>
-      {farmData.length === 0 && (
+      {loading && (
         <div className="text-9xl flex justify-center text-gray-50 mt-20 transition animate-spin">
           <AiOutlineLoading3Quarters />
         </div>
       )}
-      {farmData.length > 0 && (
+      {farmData.length === 0 && (
         <Tabs
           topTabs
           tabButton={{ icon: FaPlus, onClick: () => setShowModal(true) }}

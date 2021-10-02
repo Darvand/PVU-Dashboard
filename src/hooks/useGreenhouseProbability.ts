@@ -10,8 +10,11 @@ const ACTUAL_WEATHER: Weather = "Springer";
 // const EVENT_TODAY: Events = "Earthquake";
 // const EVENT_YESTERDAY: Events = "Hurricanes";
 // const EVENT_YESTERDAY: Events = "Volcano";
-const EVENT_YESTERDAY: Events = "Iron Rain";
-const EVENT_TODAY: Events = "Sunny";
+// const EVENT_YESTERDAY: Events = "Iron Rain";
+// const EVENT_YESTERDAY: Events = "Sunny";
+// const EVENT_YESTERDAY: Events = "Locusts Swarm";
+const EVENT_YESTERDAY: Events = "Malaria";
+const EVENT_TODAY: Events = "Iron Rain";
 
 const weatherEvents = probabilityWeatherEventByElement[ACTUAL_WEATHER];
 
@@ -51,6 +54,9 @@ const EVENTS_THIS_WEATHER: WeatherEvents[] = [
   "Volcano",
   "Iron Rain",
   "Sunny",
+  "Locusts Swarm",
+  "Malaria",
+  "Iron Rain",
 ];
 
 const calculateProbability = (event: WeatherEvents): number => {

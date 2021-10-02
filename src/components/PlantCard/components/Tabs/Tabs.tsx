@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Tabs = ({ children, topTabs = false, tabButton }: Props) => {
-  const [tabSelected, setTabSelected] = useState(children[0].props.data.id);
+  const [tabSelected, setTabSelected] = useState(children[0]?.props.data.id);
   const changeTab = (tab: number) => setTabSelected(tab);
   const data = children.map((child) => child.props.data);
   const content = children.filter(

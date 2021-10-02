@@ -15,7 +15,7 @@ interface Props {
 
 const TabButtons = ({ data, changeTab, activeTab, tabButton }: Props) => {
   return (
-    <div className="flex">
+    <div className="flex justify-center">
       {data.map(({ label: icon, id }) => (
         <button
           className={`cursor-pointer w-full ${
