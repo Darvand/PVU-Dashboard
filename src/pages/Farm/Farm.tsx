@@ -3,6 +3,7 @@ import { FaPlus, FaWindowClose } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
+import { CardInfo } from "../../components/Card/components/CardInfo";
 import { TabButton } from "../../components/Card/components/TabButton";
 import { Tab } from "../../components/PlantCard/components/Tab/Tab";
 import Tabs from "../../components/PlantCard/components/Tabs/Tabs";
@@ -37,6 +38,11 @@ const Modal = ({ show, children, closeModal }: ModalProps) => {
     </div>
   );
 };
+
+const formatStimatedTime = (stimatedTime: number) =>
+  `${Math.floor(stimatedTime / 24)} dias ${Math.floor(
+    ((stimatedTime / 24) % 1) * 60
+  )} horas`;
 
 const Farm = (props: Props) => {
   const [farmData, setFarmData] = useState<FarmResponse[]>([]);
@@ -98,27 +104,53 @@ const Farm = (props: Props) => {
           <AiOutlineLoading3Quarters />
         </div>
       )}
-      {farmData.length === 0 && (
+      {!loading && (
         <Tabs
           topTabs
           tabButton={{ icon: FaPlus, onClick: () => setShowModal(true) }}
         >
-          {farmData.map((tabFarm, index) => (
-            <Tab data={{ label: tabFarm.name, id: index }} key={index}>
-              <div className="flex flex-col items-center pt-3 bg-gray-600 pb-5">
-                <div className="flex flex-wrap gap-5 pb-5 items-center justify-center">
-                  {!loading &&
-                    tabFarm.data.map((plantData, index) => (
-                      <Card plantData={plantData} key={index} />
-                    ))}
+          {farmData.map((tabFarm, index) => {
+            const {
+              stimatedHoursIncludingPVU: timeNoPVU,
+              stimatedHoursNotIncludingPVU: timeWithPVU,
+            } = tabFarm.stats;
+            return (
+              <Tab data={{ label: tabFarm.name, id: index }} key={index}>
+                <div className="flex flex-col items-center pt-3 bg-gray-600 pb-5">
+                  <div className="flex flex-col items-center">
+                    <div className="flex flex-wrap gap-5 pb-5 items-center justify-center">
+                      {!loading &&
+                        tabFarm.data.map((plantData, index) => (
+                          <Card plantData={plantData} key={index} />
+                        ))}
+                    </div>
+                    <div className="grid grid-cols-2 w-80 bg-gray-800 p-3 rounded-md mb-3 gap-3">
+                      <CardInfo
+                        title="LE actual"
+                        value={String(tabFarm.stats.currentLE)}
+                      />
+                      <CardInfo
+                        title="Girasoles"
+                        value={String(tabFarm.stats.currentSunflower)}
+                      />
+                      <CardInfo
+                        title="Tiempo estimado para semilla sin PVU"
+                        value={formatStimatedTime(timeNoPVU)}
+                      />
+                      <CardInfo
+                        title="Tiempo estimado para semilla con PVU"
+                        value={formatStimatedTime(timeWithPVU)}
+                      />
+                    </div>
+                  </div>
+                  <Button
+                    onClick={() => removeFarm(tabFarm.name)}
+                    label="Remover"
+                  />
                 </div>
-                <Button
-                  onClick={() => removeFarm(tabFarm.name)}
-                  label="Remover"
-                />
-              </div>
-            </Tab>
-          ))}
+              </Tab>
+            );
+          })}
         </Tabs>
       )}
     </div>

@@ -24,6 +24,12 @@ export interface Data {
 export interface FarmResponse {
   name: string;
   data: Data[];
+  stats: {
+    currentLE: number;
+    currentSunflower: number;
+    stimatedHoursIncludingPVU: number;
+    stimatedHoursNotIncludingPVU: number;
+  };
 }
 
 export interface FarmStored {

@@ -50,7 +50,7 @@ const Card = ({ plantData }: CardProps) => {
   const { state } = useContext(AppContext);
   const { hours, le } = plantData.plant.production;
   const leMonthly = calculateLeMonthly(plantData.plant);
-  const pvuMonthly = (leMonthly / 500) * 0.95;
+  const pvuMonthly = (leMonthly / 550) * 0.95;
   const harvestTime = DateTime.fromMillis(plantData.harvestTime);
   const harvestTimeFormatted = harvestTime.toLocaleString(
     DateTime.DATETIME_MED

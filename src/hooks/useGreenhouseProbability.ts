@@ -2,19 +2,23 @@ import { probabilityWeatherEventByElement } from "../constants/weathers";
 import { Events, Plant, Weather } from "../types";
 
 // const ACTUAL_WEATHER: Weather = "Winter";
-const ACTUAL_WEATHER: Weather = "Springer";
 // const EVENT_YESTERDAY: Events = "Magnetic Reconnection";
 // const EVENT_YESTERDAY: Events = "Coronal Mass Ejection";
 // const EVENT_YESTERDAY: Events = "Solar Flares";
 // const EVENT_YESTERDAY: Events = "Cold Wave";
 // const EVENT_TODAY: Events = "Earthquake";
+// const ACTUAL_WEATHER: Weather = "Springer";
 // const EVENT_YESTERDAY: Events = "Hurricanes";
 // const EVENT_YESTERDAY: Events = "Volcano";
 // const EVENT_YESTERDAY: Events = "Iron Rain";
 // const EVENT_YESTERDAY: Events = "Sunny";
 // const EVENT_YESTERDAY: Events = "Locusts Swarm";
-const EVENT_YESTERDAY: Events = "Malaria";
-const EVENT_TODAY: Events = "Iron Rain";
+// const EVENT_YESTERDAY: Events = "Malaria";
+// const EVENT_TODAY: Events = "Iron Rain";
+
+const ACTUAL_WEATHER: Weather = "Summer";
+const EVENT_YESTERDAY: Events = "Heat Wave";
+const EVENT_TODAY: Events = "Malaria";
 
 const weatherEvents = probabilityWeatherEventByElement[ACTUAL_WEATHER];
 
@@ -49,15 +53,16 @@ interface GreenhouseProbability {
 //   "Cold Wave",
 //   "Earthquake",
 // ];
-const EVENTS_THIS_WEATHER: WeatherEvents[] = [
-  "Hurricanes",
-  "Volcano",
-  "Iron Rain",
-  "Sunny",
-  "Locusts Swarm",
-  "Malaria",
-  "Iron Rain",
-];
+// const EVENTS_THIS_WEATHER: WeatherEvents[] = [
+//   "Hurricanes",
+//   "Volcano",
+//   "Iron Rain",
+//   "Sunny",
+//   "Locusts Swarm",
+//   "Malaria",
+//   "Iron Rain",
+// ];
+const EVENTS_THIS_WEATHER: WeatherEvents[] = ["Heat Wave", "Malaria"];
 
 const calculateProbability = (event: WeatherEvents): number => {
   if (EVENTS_THIS_WEATHER.length === 0) {
